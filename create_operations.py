@@ -9,6 +9,26 @@ def create_user_table(conn):
     conn.commit()
 
 
+def create_activity_log_table(conn):
+    with conn.cursor() as cur:
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS activity_log_test (
+                id SERIAL PRIMARY KEY,
+                created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+                accuracy FLOAT,
+                action_type VARCHAR(50),
+                activity_name VARCHAR(255),
+                activity_session_id VARCHAR(255),
+                latitude FLOAT,
+                log_type VARCHAR(50),
+                longitude FLOAT,
+                timestamp BIGINT
+            );
+        """)
+    conn.commit()
+
+
 def create_area_table(conn):
     with conn.cursor() as cur:
         # NUMERIC(9,2) means NUMERIC(no. of signifigant figures in the number, the number of digits after the decimal)

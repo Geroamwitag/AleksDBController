@@ -12,6 +12,7 @@ def main():
     with psycopg.connect(connection_string) as conn:
         print('PostgreSQL DB Connected')
 
+        create_activity_log_table(conn)
         create_user_table(conn)
         create_area_table(conn)
         create_location_table(conn)
