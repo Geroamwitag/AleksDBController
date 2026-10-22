@@ -1,6 +1,7 @@
 # environment files
 .venv/
 .env
+.venv314
 
 # python cache files
 __pycache__/
