@@ -1,8 +1,7 @@
 import psycopg
 import os
 from helpers import print_color
-from crud_operations import *
-from create_operations import *
+from create_operations import create_all_tables
 
 
 def main():
@@ -12,16 +11,7 @@ def main():
     with psycopg.connect(connection_string) as conn:
         print('PostgreSQL DB Connected')
 
-        create_activity_log_table(conn)
-        create_user_table(conn)
-        create_area_table(conn)
-        create_location_table(conn)
-        create_activity_type_table(conn)
-        create_activity_table(conn)
-        create_sleep_table(conn)
-        create_light_measurement_table(conn)
-        create_goal_table(conn)
-        create_app_session_table(conn)
+        create_all_tables(conn)
 
         print_color('Tables Created', "green")
 
